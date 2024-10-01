@@ -170,4 +170,4 @@ if __name__ == "__main__":
         if pdfname in pdfs:
             print("Already completed!")
             continue
-        process_video_to_pdf(f"videos/{video}", 'frames', f"{pdf_output_folder}/{pdfname}", seconds_between_frames=10)
+        process_video_to_pdf(f"videos/{video}", 'frames', f"{pdf_output_folder}/{pdfname}", seconds_between_frames=5)
