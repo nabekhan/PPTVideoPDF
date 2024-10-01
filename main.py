@@ -82,10 +82,10 @@ def delete_frames(output_folder):
     image_files = [f for f in os.listdir(output_folder) if f.endswith('.jpg') or f.endswith('.png')]
     for img_file in image_files:
         os.remove(os.path.join(output_folder, img_file))
-    print(f"Deleted {len(image_files)} frames from {output_folder}.")
+    #print(f"Deleted {len(image_files)} frames from {output_folder}.")
 
 
-def compress_pdf(input_pdf, output_pdf, output_folder, max_size=1.5 * 1024 * 1024, initial_quality=90, quality_step=10):
+def compress_pdf(input_pdf, output_pdf, output_folder, max_size=2 * 1024 * 1024, initial_quality=90, quality_step=10):
     quality = initial_quality
     compressed_pdf = output_pdf
     temp_pdfs = []  # Keep track of all intermediate compressed PDFs
@@ -154,7 +154,10 @@ def process_video_to_pdf(video_path, output_folder, output_pdf, seconds_between_
 
 
 if __name__ == "__main__":
-    videos = os.listdir("videos")
+    video_input_folder = "videos"
+    if not os.path.exists(video_input_folder):
+        os.makedirs(video_input_folder)
+    videos = os.listdir(video_input_folder)
     # Ensure the /PDF/ folder exists
     pdf_output_folder = "PDF"
     if not os.path.exists(pdf_output_folder):
